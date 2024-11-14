@@ -31,7 +31,7 @@ class Snake:
 
     def draw(self, window):
         for segment in self.body:
-            pygame.draw.rect(window, GREEN, pygame.Rect(segment[0] * GRID_SIZE, segment[1] * GRID_SIZE, GRID_SIZE, GRID_SIZE))
+            pygame.draw.rect(window, GREEN, pygame.Rect(segment[0] * GRID_SIZE -2, segment[1] * GRID_SIZE -2, GRID_SIZE -2, GRID_SIZE -2))
 
 def check_collision(snake, food):
     if snake.body[0] == food.position:

@@ -13,4 +13,10 @@ class Food:
                 return position
 
     def draw(self, window):
-        pygame.draw.rect(window, RED, pygame.Rect(self.position[0] * GRID_SIZE, self.position[1] * GRID_SIZE, GRID_SIZE, GRID_SIZE))
+        pygame.draw.circle(
+            window, 
+            RED, 
+            (self.position[0] * GRID_SIZE + GRID_SIZE // 2, self.position[1] * GRID_SIZE + GRID_SIZE // 2), 
+            GRID_SIZE // 2
+        )
+

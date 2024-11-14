@@ -1,7 +1,7 @@
 import pygame
 from snake import Snake, check_collision
 from food import Food
-from a_star import a_star_search
+from a_star import a_star_search_with_safe_cycle
 from vars import WIDTH, HEIGHT, BLACK, WHITE
 
 pygame.init()
@@ -19,7 +19,7 @@ def game_loop():
     food = Food(snake)
     path = []
     score = 0
-    speed = 5
+    speed = 10
     font = pygame.font.Font(None, 30)
     running = True
 
@@ -29,7 +29,7 @@ def game_loop():
                 running = False
         
         if not path:
-            path = a_star_search(snake, food)
+            path = a_star_search_with_safe_cycle(snake, food)
         
         if path:
             next_move = path.pop(0)
@@ -47,10 +47,8 @@ def game_loop():
 
         snake.draw(window)
         food.draw(window)
-
         
         draw_text(window, f"Comida: {score}", font, WHITE, 10, 10)
-        draw_text(window, f"Velocidad: {speed}", font, WHITE, 10, 40)
 
         pygame.display.update()
         clock.tick(speed)
